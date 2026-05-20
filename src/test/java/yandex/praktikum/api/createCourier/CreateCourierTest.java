@@ -1,17 +1,12 @@
-package yandex.praktikum;
+package yandex.praktikum.api.createCourier;
 
-import io.restassured.RestAssured;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import yandex.praktikum.api.base.BaseApiTest;
 
 
-public class CreateCourierTest {
 
-    @BeforeEach
-    public void setUp(){
-        RestAssured.baseURI = "https://qa-scooter.education-services.ru";
-    }
+public class CreateCourierTest extends BaseApiTest {
 
     @Test
     public void createCourierSuccessTest() {

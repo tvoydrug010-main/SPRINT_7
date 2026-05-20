@@ -1,9 +1,10 @@
-package yandex.praktikum;
+package yandex.praktikum.api.createCourier;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+import io.qameta.allure.Step;
 
 public class CreateCourier {
     private String login;
@@ -16,7 +17,7 @@ public class CreateCourier {
         this.firstName = firstName;
     }
 
-
+    @Step("Отправляю POST запрос на создание курьера")
     public ValidatableResponse sendCreateCourier(){
         return given()
                 .contentType(ContentType.JSON)
@@ -26,6 +27,7 @@ public class CreateCourier {
                 .then();
     }
 
+    @Step("Проверяю, что курьер успешно создан (статус 201)")
     public void validateResponseSuccess(ValidatableResponse response){
         response
                 .statusCode(201)
@@ -33,7 +35,7 @@ public class CreateCourier {
                 .body("ok", equalTo(true))
                 .log().all();
     }
-
+    @Step("Проверяю ошибку конфликта при повторной регистрации с повторяющимеся даннными")
     public void validateResponseConflict(ValidatableResponse response){
         response
                 .statusCode(409)
@@ -41,7 +43,7 @@ public class CreateCourier {
                 .body("message", equalTo("Этот логин уже используется."))
                 .log().all();
     }
-
+    @Step("Проверяю ошибку при отсутствии передачи обязательных полей")
     public void validateResponseBadRequest(ValidatableResponse response){
         response
                 .statusCode(400)
