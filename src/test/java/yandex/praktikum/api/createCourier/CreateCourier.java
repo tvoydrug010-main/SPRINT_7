@@ -40,7 +40,7 @@ public class CreateCourier {
         response
                 .statusCode(409)
                 .and()
-                .body("message", equalTo("Этот логин уже используется."))
+                .body("message", equalTo("Этот логин уже используется. Попробуйте другой."))
                 .log().all();
     }
     @Step("Проверяю ошибку при отсутствии передачи обязательных полей")

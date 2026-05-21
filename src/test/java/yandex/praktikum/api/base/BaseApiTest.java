@@ -6,8 +6,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
 import static io.restassured.RestAssured.given;
-import static java.util.concurrent.CompletableFuture.anyOf;
-import static org.hamcrest.CoreMatchers.equalTo;
+
 
 public abstract class BaseApiTest {
 

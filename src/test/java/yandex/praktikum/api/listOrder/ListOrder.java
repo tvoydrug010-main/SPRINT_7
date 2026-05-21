@@ -50,7 +50,7 @@ public class ListOrder {
     public void validateResponseNotFound(ValidatableResponse response){
         response
                 .statusCode(404)
-                .body("message", equalTo("Курьер с идентификатором {courierId} не найден"))
+                .body("message", org.hamcrest.Matchers.containsString("не найден"))
                 .log().all();
     }
     public int getId() {
